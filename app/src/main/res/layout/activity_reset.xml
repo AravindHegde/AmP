@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    android:paddingLeft="2dp"
+    android:paddingTop="2dp"
+    android:paddingRight="2dp"
+    android:paddingBottom="2dp"
+    tools:context=".reset">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/newlogo" />
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="4"
+            android:inputType="numberPassword"
+            android:hint="Old SecretKey" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="New SecretKey"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="4"
+            android:inputType="numberPassword" />
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Re-enter SecretKey"
+            android:layout_below="@+id/editText1"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="4"
+            android:inputType="numberPassword" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editText2"
+            android:layout_marginTop="35dp"
+            android:background="#3385ff"
+            android:textColor="#ffffff"
+            android:outlineSpotShadowColor="#ffffff"
+            android:onClick="Reset"
+            android:text="Reset" />
+    </RelativeLayout>
+
+
+</ScrollView>

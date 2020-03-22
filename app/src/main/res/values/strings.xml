@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AmP</string>
+    <string-array name="names">
+        <item>What Is your favorite book?</item>
+        <item>What is your mother’s maiden name?</item>
+        <item>What city were you born in?</item>
+        <item>Where did you go to high school/college?</item>
+        <item>Where is your favorite place to vacation?</item>
+    </string-array>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>
