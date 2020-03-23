@@ -24,15 +24,19 @@ public class FeedbackActivity extends AppCompatActivity {
     public void Send(View view){
         EditText e1=(EditText)findViewById(R.id.editText);
         String msg=e1.getText().toString();
-        String toAddress="7760919577";
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-            SmsManager smsManager = SmsManager.getDefault();
-            ArrayList<String> parts =smsManager.divideMessage(msg);
-            smsManager.sendMultipartTextMessage(toAddress,null,parts,null,null);
-            Toast.makeText(this,"Message Sent",Toast.LENGTH_SHORT).show();
+        if(msg.equals("")){
+            e1.setError("This field can't be empty");
         }
-        else{
-            Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+        else {
+            String toAddress = "7760919577";
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+                SmsManager smsManager = SmsManager.getDefault();
+                ArrayList<String> parts = smsManager.divideMessage(msg);
+                smsManager.sendMultipartTextMessage(toAddress, null, parts, null, null);
+                Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
