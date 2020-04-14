@@ -26,14 +26,13 @@ public class LogActivity extends AppCompatActivity {
         ArrayList<String> array=new ArrayList<String>();
         db=new DataBaseHelperLog(this);
         Cursor cr=db.getCursour();
-        cr.moveToFirst();
+        cr.moveToLast();
         int len=cr.getCount();
-        Log.v("count",""+cr.getCount());
         for(int i=0;i<len;i++){
             String str="";
             str=cr.getString(0)+" Requested by:"+cr.getString(1)+"\nDate:"+cr.getString(2)+" Time:"+cr.getString(3);
             array.add(str);
-            cr.moveToNext();
+            cr.moveToPrevious();
         }
         final ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,array);
         listView.setAdapter(adapter);
