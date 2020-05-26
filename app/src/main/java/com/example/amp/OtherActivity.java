@@ -37,7 +37,7 @@ public class OtherActivity extends AppCompatActivity {
         }
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)== PackageManager.PERMISSION_GRANTED){
             mPeopleList = new ArrayList<Map<String, String>>();
-            PopulatePeopleList();
+           // PopulatePeopleList();
 
 
             mAdapter = new SimpleAdapter(this, mPeopleList, R.layout.custview, new String[]{"Name", "Phone", "Type"}, new int[]{R.id.ccontName, R.id.ccontNo, R.id.ccontType});
@@ -107,17 +107,16 @@ public class OtherActivity extends AppCompatActivity {
 
                     NamePhoneType.put("Name", contactName);
                     NamePhoneType.put("Phone", phoneNumber);
-
-                    if(numberType.equals("0"))
-                        NamePhoneType.put("Type", "Work");
-                    else
-                    if(numberType.equals("1"))
-                        NamePhoneType.put("Type", "Home");
-                    else if(numberType.equals("2"))
-                        NamePhoneType.put("Type",  "Mobile");
-                    else
-                        NamePhoneType.put("Type", "Other");
-
+                    if(numberType!=null) {
+                        if (numberType.equals("0"))
+                            NamePhoneType.put("Type", "Work");
+                        else if (numberType.equals("1"))
+                            NamePhoneType.put("Type", "Home");
+                        else if (numberType.equals("2"))
+                            NamePhoneType.put("Type", "Mobile");
+                        else
+                            NamePhoneType.put("Type", "Other");
+                    }
                     //Then add this map to the list.
                     mPeopleList.add(NamePhoneType);
                 }
