@@ -15,8 +15,6 @@ public class GPSTracker extends Service implements LocationListener {
     private final Context mContext;
 
     boolean isGPSEnabled = false;
-    boolean isNetworkEnabled = false;
-    boolean canGetLocation = false;
     String loc="Sorry.. Location is off!";
     Location location; // Location
 
@@ -41,13 +39,10 @@ public class GPSTracker extends Service implements LocationListener {
                     .getSystemService(LOCATION_SERVICE);
 
             // Getting GPS status
-                isGPSEnabled = locationManager
-                        .isProviderEnabled(LocationManager.GPS_PROVIDER);
-            isNetworkEnabled = locationManager
-                    .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            isGPSEnabled = locationManager
+                    .isProviderEnabled(LocationManager.GPS_PROVIDER);
             if (isGPSEnabled) {
                 //Log.d("location2","inside GPS");
-                this.canGetLocation = true;
                 if (location == null) {
                     //Log.d("location3","inside Location");
                     locationManager.requestLocationUpdates(
@@ -64,21 +59,12 @@ public class GPSTracker extends Service implements LocationListener {
                         }
                     }
                 }
-            }
-            else if (isNetworkEnabled) {
-                this.canGetLocation = true;
-                locationManager.requestLocationUpdates(
-                        LocationManager.NETWORK_PROVIDER,
-                        MIN_TIME_BW_UPDATES,
-                        MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-                if (locationManager != null) {
-                    location = locationManager
-                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                    if (location != null) {
-                        loc="GPS is off.. Nearest Possible location is :-\n"+"Lattitude : "+location.getLatitude()+", Longitude : "+location.getLongitude()+"\nAccuracy : "+location.getAccuracy();
-                    }
+                else if (location != null) {
+                        //Log.d("location5","inside Location2");
+                        loc="Lattitude : "+location.getLatitude()+", Longitude : "+location.getLongitude()+"\nAccuracy : "+location.getAccuracy();
                 }
             }
+
             }
         catch (Exception e) {
             e.printStackTrace();
